@@ -4,5 +4,6 @@ global:
 
 scrape_configs:
   - job_name: 'dice-app'
+    metrics_path: '/metrics'
     static_configs:
       - targets: ['app:8080']  # Docker 네트워크 내에서의 서비스 이름 사용
