@@ -1,0 +1,8 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'dice-app'
+    static_configs:
+      - targets: ['app:8080']  # Docker 네트워크 내에서의 서비스 이름 사용
