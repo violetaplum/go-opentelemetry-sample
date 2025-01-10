@@ -144,7 +144,12 @@ func newPrometheusMeterProvider() (*metric.MeterProvider, error) {
 	}
 
 	meterProvider := metric.NewMeterProvider(
-		metric.WithReader(exporter))
+		metric.WithReader(exporter),
+		metric.WithView(metric.NewView(
+			metric.Instrument{Name: "dice.rolls"},
+			metric.Stream{Name: "dice_game_rolls_total"},
+		)),
+	)
 
 	// 초기화 후 메트릭이 제대로 등록되었는지 확인하기 위한 로그
 	llog.Printf("Prometheus meter provider initialized")
